@@ -22,11 +22,13 @@ const dbconnect = require('./config/db.js');
 
 // routers
 const userRouter = require('./routes/user/web/user.routes.js');
+const adminRouter = require('./routes/admin/web/admin.routes.js')
 
 
 
 // routes
 app.use("/user", userRouter);
+app.use("/admin", adminRouter);
 
 
 // Start the server
