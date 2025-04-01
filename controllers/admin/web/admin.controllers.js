@@ -1,4 +1,4 @@
-const Admin = require('../../../models/userModel/user.model.js');
+const Admin = require('../../../models/admin/admin.model.js');
 const {hashPassword, comparePassword} = require("../../../utils/bcrypt.js");
 const {generateJWT} = require("../../../utils/jwt.js");
 
@@ -13,6 +13,7 @@ const registerAdmin = async (req, res) => {
 
         // Check if admin already exists
         const existingAdmin = await Admin.find();
+        // console.log(existingAdmin)
         if (existingAdmin.length > 0) return res.status(400).json({ success: false , error : "Admin is already existed." });
 
         const hashedPassword = await hashPassword(password);
