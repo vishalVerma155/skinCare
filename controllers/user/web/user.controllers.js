@@ -6,7 +6,7 @@ const { generateJWT } = require('../../../utils/jwt.js')
 const registerUser = async (req, res) => {
 
     try {
-        const { email, userName, password, google_id } = req.body;
+        const { name,email, userName, password, google_id } = req.body;
 
         if (!email || !userName) {
             return res.status(401).json({ success: false, error: "User name and email are compulsary" });
@@ -29,6 +29,7 @@ const registerUser = async (req, res) => {
 
         // create user
         const newUser = new User({
+            name,
             email,
             userName: userName ? userName : undefined,
             password: hashedPassword,
@@ -55,7 +56,8 @@ const registerUser = async (req, res) => {
 
         const payload = {
             _id: newUser._id,
-            email: newUser.email
+            email: newUser.email,
+            userName : newUser.userName
         };
 
         // generate access token
