@@ -1,6 +1,8 @@
 const User = require('../../../models/userModel/user.model.js');
 const { hashPassword, comparePassword } = require('../../../utils/bcrypt.js');
-const { generateJWT } = require('../../../utils/jwt.js')
+const { generateJWT } = require('../../../utils/jwt.js');
+const WishList = require('../../../models/wishList/wishList.model.js');
+const Cart = require('../../../models/cart/cart.model.js')
 
 // user register controllers
 const registerUser = async (req, res) => {
@@ -39,20 +41,20 @@ const registerUser = async (req, res) => {
         // save user
         await newUser.save();
 
-        // const cart = new Cart({
-        //     userId: newUser._id,
-        //     products: []
-        // })
+        const cart = new Cart({
+            userId: newUser._id,
+            products: []
+        })
 
-        // await cart.save();
+        await cart.save();
 
-        // const  wishList = new WishList({
-        //     userId : newUser._id,
-        //     products: [],
-        // })   
+        const  wishList = new WishList({
+            userId : newUser._id,
+            products: [],
+        })   
 
-        // await wishList.save();
-        // console.log("Cart and wishlist has been sucessfully made.");
+        await wishList.save();
+        console.log("Cart and wishlist has been sucessfully made.");
 
         const payload = {
             _id: newUser._id,
