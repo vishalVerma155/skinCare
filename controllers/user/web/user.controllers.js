@@ -133,7 +133,7 @@ const getUserProfile = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
     try {
-        console.log(req.user.userName);
+
         if (!req.user || req.user.userName !== "admin") {
             return res.status(401).json({ success: false, error: "Only admin can get all users list" });
         }
