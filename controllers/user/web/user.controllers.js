@@ -133,6 +133,7 @@ const getUserProfile = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
     try {
+        console.log(req.user.userName);
         if (!req.user || req.user.userName !== "admin") {
             return res.status(401).json({ success: false, error: "Only admin can get all users list" });
         }
@@ -163,6 +164,30 @@ const deleteUserProfile = async (req, res) => {
 
         res.clearCookie("AccessToken"); // clear cookies for logout
         return res.status(200).json({ success: true, Message: "User has been sucessfully deleted" }); // return response
+    } catch (error) {
+        return res.status(400).json({ success: false, error: error.message });
+    }
+}
+
+
+const deleteUserByAdmin = async (req, res) => {
+    try {
+        if(!req.user || req.user.userName !== "admin"){
+            return res.status(402).json({ success: false, error: "Only admin can delete user" });
+        }
+        const userId = req.params.userId; // get user id
+        
+        if(!userId){
+            return res.status(402).json({ success: false, error: "User id not found" });
+        }
+
+      const deletedUser =  await User.findByIdAndDelete(userId); // find and delete user
+
+      
+      if(!deletedUser){
+        return res.status(402).json({ success: false, error: "User  not found" });
+    }
+        return res.status(200).json({ success: true, Message: "User has been sucessfully deleted", deletedUser }); // return response
     } catch (error) {
         return res.status(400).json({ success: false, error: error.message });
     }
@@ -251,4 +276,4 @@ const logoutUser = (req, res) => {
 }
 
 
-module.exports = { registerUser, loginUser, getUserProfile, getAllUsers, changeUserPassword, deleteUserProfile, logoutUser, editUserProfile };
+module.exports = { registerUser, loginUser, getUserProfile, getAllUsers, changeUserPassword, deleteUserProfile, logoutUser, editUserProfile, deleteUserByAdmin };
