@@ -29,7 +29,11 @@ const cartRouter = require('./routes/cart/cart.routes.js');
 const colorsRouter = require('./routes/colors/colors.routes.js');
 const reviewRouter = require('./routes/product/review.routes.js');
 const orderRouter = require("./routes/order/order.routes.js");
-const companyLogoRouter = require('./routes/companyLogo/companyLogo.routes.js')
+const companyLogoRouter = require('./routes/companyLogo/companyLogo.routes.js');
+const menCollectionRouter = require('./routes/homepage/category/menCollection.routes.js');
+const womenCollectionRouter = require('./routes/homepage/category/womenCollection.routes.js');
+const kidsCollectionRouter = require('./routes/homepage/category/kidsCollection.routes.js');
+
 
 
 
@@ -45,6 +49,10 @@ app.use("/cart", cartRouter);
 app.use("/cart", orderRouter);
 app.use("/colors", colorsRouter);
 app.use("/companyLogo", companyLogoRouter);
+app.use("/home", menCollectionRouter);
+app.use("/home", womenCollectionRouter);
+app.use("/home", kidsCollectionRouter);
+
 
 
 

@@ -18,10 +18,10 @@ const registerStartingAmountSection = async (req, res) => {
         await createdStartingAmountSection.save(); //  save logo
 
         if (!createdStartingAmountSection) {
-            return res.status(500).json({success : false, error: "Error in create men collection section in database" }); // check if logo is saved or not
+            return res.status(500).json({success : false, error: "Error in create starting amount section in database" }); // check if logo is saved or not
         }
 
-        return res.status(200).json({success : true,  Message: "Men collection section sucessfully created", StartingAmountSectionSection :createdStartingAmountSection }); // return response
+        return res.status(200).json({success : true,  Message: "starting amount section sucessfully created", StartingAmountSection :createdStartingAmountSection }); // return response
     } catch (error) {
         return res.status(400).json({success : false, error: error.message });
     }
@@ -37,8 +37,9 @@ const getStartingAmountSection = async (req, res) => {
         }
 
         const image = await StartingAmountSection.findById(imageId); // find image
+
         if (!image) {
-            return res.status(404).json({ success : false, error: "Men collection section not found" }); // check image id 
+            return res.status(404).json({ success : false, error: "starting amount section not found" }); // check image id 
         }
 
         return res.status(200).json({success : true, StartingAmountSection_Section: image }); // return response
@@ -84,12 +85,12 @@ const updateStartingAmountSection = async (req, res) => {
             payload.image = newImage;
         }
 
-        const StartingAmountSection = await StartingAmountSection.findByIdAndUpdate(imageId, payload, { new: true }); // find hero section image and update 
-        if (!StartingAmountSection) {
+        const startingAmountSection = await StartingAmountSection.findByIdAndUpdate(imageId, payload, { new: true }); // find hero section image and update 
+        if (!startingAmountSection) {
             return res.status(404).json({ success : false, error: " Section not found" }); // check image id 
         }
 
-        return res.status(200).json({success : true, update_StartingAmountSection_Section: StartingAmountSection }); // return response
+        return res.status(200).json({success : true, update_StartingAmountSection: startingAmountSection }); // return response
     } catch (error) {
         return res.status(400).json({ success : false, error: error.message });
     }
@@ -110,7 +111,7 @@ const deleteStartingAmountSection = async (req, res) => {
             return res.status(404).json({ success : false, error: " section not found" }); // check image id 
         }
 
-        return res.status(200).json({success : true, Message: "Men collection section has been deleted", deleted_StartingAmountSection_Image: image }); // return response
+        return res.status(200).json({success : true, Message: "starting amount section has been deleted", deleted_StartingAmountSection_Image: image }); // return response
     } catch (error) {
         return res.status(400).json({ success : false, error: error.message });
     }

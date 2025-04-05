@@ -85,7 +85,7 @@ const updateHeroSection = async (req, res) => {
 
         const heroSection = await HeroSection.findByIdAndUpdate(imageId, payload, { new: true }); // find hero section image and update 
         if (!heroSection) {
-            return res.status(404).json({ Message: "Section id not found" }); // check image id 
+            return res.status(404).json({ success : false, error: "Section id not found" }); // check image id 
         }
 
         return res.status(200).json({success : true, update_Hero_Section: heroSection }); // return response
