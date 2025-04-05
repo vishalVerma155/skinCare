@@ -29,6 +29,7 @@ const cartRouter = require('./routes/cart/cart.routes.js');
 const colorsRouter = require('./routes/colors/colors.routes.js');
 const reviewRouter = require('./routes/product/review.routes.js');
 const orderRouter = require("./routes/order/order.routes.js");
+const companyLogoRouter = require('./routes/companyLogo/companyLogo.routes.js')
 
 
 
@@ -43,6 +44,8 @@ app.use("/wishList", wishListRouter);
 app.use("/cart", cartRouter);
 app.use("/cart", orderRouter);
 app.use("/colors", colorsRouter);
+app.use("/companyLogo", companyLogoRouter);
+
 
 
 

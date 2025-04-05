@@ -29,8 +29,6 @@ const addProductInWishList = async (req, res) => {
             return res.status(400).json({success : false, error: "Wish list is not updated." })
         }
 
-        
-
         return res.status(200).json({success : true, Message: "Wish list has been updated", wishList }); // return response
     } catch (error) {
         return res.status(400).json({success : false, error: error.message });
