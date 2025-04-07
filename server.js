@@ -33,6 +33,9 @@ const companyLogoRouter = require('./routes/companyLogo/companyLogo.routes.js');
 const menCollectionRouter = require('./routes/homepage/category/menCollection.routes.js');
 const womenCollectionRouter = require('./routes/homepage/category/womenCollection.routes.js');
 const kidsCollectionRouter = require('./routes/homepage/category/kidsCollection.routes.js');
+const heroSectionRouter = require('./routes/homepage/heroSection/heroSection.routes.js');
+const offerSectionRouter = require('./routes/homepage/offerSection/offerSection.routes.js');
+const startingAmountSectionRouter = require('./routes/homepage/startingAmountSection/startingAmountSection.routes.js')
 
 
 
@@ -52,6 +55,11 @@ app.use("/companyLogo", companyLogoRouter);
 app.use("/home", menCollectionRouter);
 app.use("/home", womenCollectionRouter);
 app.use("/home", kidsCollectionRouter);
+app.use("/home", heroSectionRouter);
+app.use("/home", offerSectionRouter);
+app.use("/home", startingAmountSectionRouter);
+
+
 
 
 
